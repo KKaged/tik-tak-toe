@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 100vw;
+    background-color: #FAF9F6;
+    font-family: formula1;
+    font-size: 4.5rem;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    background-color: #FAF9F6;
+    font-family: formula1;
+    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    height: 80vh;
+}
+
+.current-player {
+    padding-top: 1rem;
+    font-family: formula1;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: 10rem 10rem 10rem;
+    grid-template-rows: 10rem 10rem 10rem;
+    border: 5px solid #24292e;
+    border-radius: 10px;
+}
+
+.card {
+    border: 3px solid #24292e;
+}
+
+.card:hover {
+    background-color: rgb(235, 234, 230);
+}
+
+.button {
+    width: 20rem;
+    height: 5rem;
+    font-size: 2rem;
+    border: 3px solid #24292e;
+    border-right: 7px solid #24292e;
+    border-bottom: 7px solid #24292e;
+    border-radius: 8px;
+    background-color: #FAF9F6;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: italic;
+    font-size: 25px;
+    background-color: #FAF9F6;
+    height: 10vh;
+}
