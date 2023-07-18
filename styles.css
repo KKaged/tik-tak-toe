@@ -67,3 +67,10 @@
     background-color: #FAF9F6;
     height: 10vh;
 }
+
+.pick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+}

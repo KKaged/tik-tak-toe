@@ -1,21 +1,23 @@
 const gameBoard = (() => {
-  const playerFact = (player, sign) => {
-    return { player, sign };
+  const playerFact = (player, sign, turn) => {
+    return { player, sign, turn };
   };
   return playerFact;
 })();
 
-const player1 = gameBoard("Player 1", "X");
-const player2 = gameBoard("Player 2", "O");
-
-const who = document.getElementsByClassName("current-player");
-const cards = document.querySelectorAll(".card");
+const player1 = gameBoard("Player 1", "X", 1);
+const player2 = gameBoard("Player 2", "O", 2);
 
 const currentPlayer = () => {
+  const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.addEventListener("click", function () {
-      console.log(`Test`);
+      const pick = document.createElement("div");
+      pick.classList.add("pick");
+      pick.textContent = "X";
+      card.appendChild(pick);
     });
   });
 };
+
 currentPlayer();
