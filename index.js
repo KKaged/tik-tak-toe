@@ -1,4 +1,5 @@
 const cards = document.querySelectorAll(".card");
+const selection = document.getElementsByClassName("pick");
 
 const gameBoard = (() => {
   const playerFact = (player, sign) => {
@@ -10,20 +11,24 @@ const gameBoard = (() => {
 const player1 = gameBoard("Player 1", "X");
 const player2 = gameBoard("Player 2", "O");
 
-let currentPlayer = player2;
+let currentPlayer = player1;
 
 const game = () => {
   cards.forEach((card) => {
     card.addEventListener("click", function () {
       // Switch players
-      currentPlayer = currentPlayer === player1 ? player2 : player1;
-
-      const pick = document.createElement("div");
-      pick.classList.add("pick");
-      pick.textContent = currentPlayer.sign;
-      card.appendChild(pick);
-      console.log(currentPlayer);
-      // Call a function or perform any necessary actions for the new player
+      if (card.querySelector(".pick")) {
+        //IF True
+        console.log("It does");
+      } else {
+        //IF False
+        const pick = document.createElement("div");
+        pick.classList.add("pick");
+        pick.textContent = currentPlayer.sign;
+        card.appendChild(pick);
+        console.log(currentPlayer);
+        currentPlayer = currentPlayer === player1 ? player2 : player1;
+      }
     });
   });
 };
@@ -35,5 +40,5 @@ function restart() {
   selection.forEach((pick) => {
     pick.parentNode.removeChild(pick);
   });
-  currentPlayer = player2;
+  currentPlayer = player1;
 }
