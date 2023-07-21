@@ -7,7 +7,7 @@
     width: 100vw;
     background-color: #FAF9F6;
     font-family: formula1;
-    font-size: 4.5rem;
+    font-size: 4rem;
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -22,11 +22,10 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    height: 80vh;
+    height: 75vh;
 }
 
 .current-player {
-    padding-top: 1rem;
     font-family: formula1;
 }
 
@@ -57,6 +56,16 @@
     background-color: #FAF9F6;
 }
 
+.button:hover {
+    background-color: #0a79e8;
+    color: #FAF9F6;
+}
+
+.button:active {
+    background-color: #084f96;
+    color: #FAF9F6;
+}
+
 .copyright {
     display: flex;
     flex-direction: row;
@@ -65,7 +74,7 @@
     font-weight: italic;
     font-size: 25px;
     background-color: #FAF9F6;
-    height: 10vh;
+    height: 15vh;
 }
 
 .pick {
