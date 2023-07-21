@@ -45,5 +45,5 @@ function restart() {
   });
   currentPlayer = player1;
   const playerStatus = document.querySelector(".current-player");
-  playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
+  playerStatus.textContent = "Start Playing! Player 1 goes first!";
 }
