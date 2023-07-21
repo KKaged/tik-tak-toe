@@ -20,8 +20,11 @@ const game = () => {
       if (card.querySelector(".pick")) {
         //IF True
         console.log("It does");
+        console.log(currentPlayer);
       } else {
         //IF False
+        const playerStatus = document.querySelector(".current-player");
+        playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
         const pick = document.createElement("div");
         pick.classList.add("pick");
         pick.textContent = currentPlayer.sign;
@@ -41,4 +44,6 @@ function restart() {
     pick.parentNode.removeChild(pick);
   });
   currentPlayer = player1;
+  const playerStatus = document.querySelector(".current-player");
+  playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
 }
