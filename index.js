@@ -24,13 +24,13 @@ const game = () => {
       } else {
         //IF False
         const playerStatus = document.querySelector(".current-player");
-        playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
         const pick = document.createElement("div");
         pick.classList.add("pick");
-        pick.textContent = currentPlayer.sign;
         card.appendChild(pick);
         console.log(currentPlayer);
+        pick.textContent = currentPlayer.sign;
         currentPlayer = currentPlayer === player1 ? player2 : player1;
+        playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
       }
     });
   });
