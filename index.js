@@ -13,9 +13,35 @@ const player2 = gameBoard("Player 2", "O");
 
 let currentPlayer = player1;
 
+let boardWins = [
+  [0, 1, 2],
+  [0, 3, 6],
+  [3, 4, 5],
+  [6, 7, 8],
+  [1, 4, 7],
+  [2, 4, 6],
+  [2, 5, 8],
+  [0, 4, 8],
+];
+const checkWinner = (playerSign) => {
+  return boardWins.some((winningCombination) => {
+    return winningCombination.every((position) => {
+      const card = cards[position];
+      return card.textContent === playerSign;
+    });
+  });
+};
+
 const game = () => {
   cards.forEach((card) => {
     card.addEventListener("click", function () {
+      const playerStatus = document.querySelector(".current-player");
+      if (
+        playerStatus.textContent.includes("Wins!") ||
+        playerStatus.textContent === "It's a Draw!"
+      ) {
+        return; // If there's a winner or a draw, do not allow further moves
+      }
       // Switch players
       if (card.querySelector(".pick")) {
         //IF True
@@ -23,12 +49,15 @@ const game = () => {
         console.log(currentPlayer);
       } else {
         //IF False
-        const playerStatus = document.querySelector(".current-player");
         const pick = document.createElement("div");
         pick.classList.add("pick");
         card.appendChild(pick);
         console.log(currentPlayer);
         pick.textContent = currentPlayer.sign;
+        if (checkWinner(currentPlayer.sign)) {
+          playerStatus.textContent = currentPlayer.player + " Wins!";
+          return;
+        }
         currentPlayer = currentPlayer === player1 ? player2 : player1;
         playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
       }
