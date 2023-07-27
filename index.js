@@ -1,5 +1,6 @@
 const cards = document.querySelectorAll(".card");
 const selection = document.getElementsByClassName("pick");
+let gameEnded = false;
 
 const gameBoard = (() => {
   const playerFact = (player, sign) => {
@@ -23,26 +24,61 @@ let boardWins = [
   [2, 5, 8],
   [0, 4, 8],
 ];
-const checkResult = (playerSign) => {};
+const checkResult = (playerSign) => {
+  const playerStatus = document.querySelector(".current-player");
+
+  for (const combinations of boardWins) {
+    let isWinningCombo = true;
+
+    for (const position of combinations) {
+      const card = cards[position];
+      if (card.textContent !== playerSign) {
+        isWinningCombo = false;
+        break;
+      }
+    }
+    if (isWinningCombo) {
+      return "win";
+    }
+  }
+  const isDraw = Array.from(cards).every(
+    (card) => card.textContent === "X" || card.textContent === "O"
+  );
+  if (isDraw) {
+    return "draw";
+  }
+  return "continue";
+};
 
 const game = () => {
   cards.forEach((card) => {
     card.addEventListener("click", function () {
+      if (gameEnded) {
+        return;
+      }
       const playerStatus = document.querySelector(".current-player");
-      // Switch players
+
       if (card.querySelector(".pick")) {
-        //IF True
         console.log("It does");
         console.log(currentPlayer);
       } else {
-        //IF False
         const pick = document.createElement("div");
         pick.classList.add("pick");
         card.appendChild(pick);
         console.log(currentPlayer);
         pick.textContent = currentPlayer.sign;
-        currentPlayer = currentPlayer === player1 ? player2 : player1;
-        playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
+
+        const result = checkResult(currentPlayer.sign);
+        if (result === "win") {
+          playerStatus.textContent = currentPlayer.player + " Wins!";
+          gameEnded = true;
+        } else if (result === "draw") {
+          playerStatus.textContent = "It's a Draw!";
+          gameEnded = true;
+        } else {
+          currentPlayer = currentPlayer === player1 ? player2 : player1;
+          playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
+        }
       }
     });
   });
@@ -58,4 +94,5 @@ function restart() {
   currentPlayer = player1;
   const playerStatus = document.querySelector(".current-player");
   playerStatus.textContent = "Start Playing! Player 1 goes first!";
+  gameEnded = false;
 }
