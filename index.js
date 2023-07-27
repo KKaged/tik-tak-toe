@@ -23,21 +23,7 @@ let boardWins = [
   [2, 5, 8],
   [0, 4, 8],
 ];
-const checkResult = (playerSign) => {
-  return boardWins.some((winningCombination) => {
-    return winningCombination.every((position) => {
-      const card = cards[position];
-      return card.textContent === playerSign;
-      if (checkResult(currentPlayer.sign)) {
-        playerStatus.textContent = currentPlayer.player + " Wins!";
-        return;
-      } else if (checkResult(currentPlayer.sign))
-        if (playerStatus.textContent.includes("Wins!")) {
-          playerStatus.textContent = "It's a draw"; // If there's a winner or a draw, do not allow further moves
-        }
-    });
-  });
-};
+const checkResult = (playerSign) => {};
 
 const game = () => {
   cards.forEach((card) => {
