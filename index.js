@@ -23,11 +23,18 @@ let boardWins = [
   [2, 5, 8],
   [0, 4, 8],
 ];
-const checkWinner = (playerSign) => {
+const checkResult = (playerSign) => {
   return boardWins.some((winningCombination) => {
     return winningCombination.every((position) => {
       const card = cards[position];
       return card.textContent === playerSign;
+      if (checkResult(currentPlayer.sign)) {
+        playerStatus.textContent = currentPlayer.player + " Wins!";
+        return;
+      } else if (checkResult(currentPlayer.sign))
+        if (playerStatus.textContent.includes("Wins!")) {
+          playerStatus.textContent = "It's a draw"; // If there's a winner or a draw, do not allow further moves
+        }
     });
   });
 };
@@ -36,12 +43,6 @@ const game = () => {
   cards.forEach((card) => {
     card.addEventListener("click", function () {
       const playerStatus = document.querySelector(".current-player");
-      if (
-        playerStatus.textContent.includes("Wins!") ||
-        playerStatus.textContent === "It's a Draw!"
-      ) {
-        return; // If there's a winner or a draw, do not allow further moves
-      }
       // Switch players
       if (card.querySelector(".pick")) {
         //IF True
@@ -54,10 +55,6 @@ const game = () => {
         card.appendChild(pick);
         console.log(currentPlayer);
         pick.textContent = currentPlayer.sign;
-        if (checkWinner(currentPlayer.sign)) {
-          playerStatus.textContent = currentPlayer.player + " Wins!";
-          return;
-        }
         currentPlayer = currentPlayer === player1 ? player2 : player1;
         playerStatus.textContent = "It's " + currentPlayer.player + "'s Turn";
       }
