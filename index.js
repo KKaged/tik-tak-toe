@@ -62,13 +62,11 @@ const game = () => {
       const playerStatus = document.querySelector(".current-player");
 
       if (card.querySelector(".pick")) {
-        console.log("It does");
         console.log(currentPlayer);
       } else {
         const pick = document.createElement("div");
         pick.classList.add("pick");
         card.appendChild(pick);
-        console.log(currentPlayer);
         pick.textContent = currentPlayer.sign;
 
         const result = checkResult(currentPlayer.sign);
