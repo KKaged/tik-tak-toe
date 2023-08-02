@@ -87,3 +87,7 @@
 .card.highlight {
     color: red;
 }
+
+.card.draw {
+    color: #0a79e8;
+}

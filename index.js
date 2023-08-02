@@ -46,6 +46,9 @@ const checkResult = (playerSign) => {
     (card) => card.textContent === "X" || card.textContent === "O"
   );
   if (isDraw) {
+    cards.forEach((card) => {
+      card.classList.add("draw");
+    });
     return "draw";
   }
   return "continue";
@@ -92,6 +95,9 @@ function restart() {
   });
   cards.forEach((card) => {
     card.classList.remove("highlight");
+  });
+  cards.forEach((card) => {
+    card.classList.remove("draw");
   });
   currentPlayer = player1;
   const playerStatus = document.querySelector(".current-player");
