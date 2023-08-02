@@ -25,8 +25,6 @@ let boardWins = [
   [0, 4, 8],
 ];
 const checkResult = (playerSign) => {
-  const playerStatus = document.querySelector(".current-player");
-
   for (const combinations of boardWins) {
     let isWinningCombo = true;
 
