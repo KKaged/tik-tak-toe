@@ -38,6 +38,9 @@ const checkResult = (playerSign) => {
       }
     }
     if (isWinningCombo) {
+      combinations.forEach((position) => {
+        cards[position].classList.add("highlight");
+      });
       return "win";
     }
   }
@@ -90,6 +93,9 @@ function restart() {
   const selection = document.querySelectorAll(".pick");
   selection.forEach((pick) => {
     pick.parentNode.removeChild(pick);
+  });
+  cards.forEach((card) => {
+    card.classList.remove("highlight");
   });
   currentPlayer = player1;
   const playerStatus = document.querySelector(".current-player");
